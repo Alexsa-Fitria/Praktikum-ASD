@@ -1,69 +1,39 @@
-import java.util.Scanner;
-
 public class fungsi {
-    static int[][] stokBunga;
-    static int[] hargaBunga = {75000, 50000, 60000, 10000};
+    private static final int[][] stokBunga = {
+        {10, 5, 15, 7},  
+        {6, 11, 9, 12},  
+        {2, 10, 10, 5},  
+        {5, 7, 12, 9}   
+    };
+
+    public static void hitungPendapatanCabang() {
+        int hargaAglonema = 75000;
+        int hargaKeladi = 50000;
+        int hargaAlocasia = 60000;
+        int hargaMawar = 10000;
+        for (int i = 0; i < stokBunga.length; i++) {
+            int pendapatan = stokBunga[i][0] * hargaAglonema + stokBunga[i][1] * hargaKeladi + stokBunga[i][2] * hargaAlocasia + stokBunga[i][3] * hargaMawar;
+            System.out.println("Pendapatan Cabang " + (i + 1) + ": Rp" + pendapatan);
+        }
+    }
+
+    public static void kurangiStokMatiCabang4() {
+        int[] penguranganStok = {-1, -2, 0, -5}; 
+        int cabang = 3; 
+        for (int i = 0; i < stokBunga[cabang].length; i++) {
+            stokBunga[cabang][i] += penguranganStok[i];
+        }
+    }
+
+    public static void stokBungaCabang4() {
+        int cabang = 3; 
+        System.out.println("Stok Cabang 4: Aglonema " + stokBunga[cabang][0] + ", Keladi " + stokBunga[cabang][1] + ", Alocasia " + stokBunga[cabang][2] + ", Mawar " + stokBunga[cabang][3]);
+    }
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-
-        stokBunga = new int[4][4];  
-
-        for (int i = 0; i < stokBunga.length; i++) {
-            for (int j = 0; j < stokBunga[i].length; j++) {
-                System.out.print("Masukkan stok bunga " + namaBunga(j) + " untuk cabang " + (i + 1) + ": ");
-                stokBunga[i][j] = sc.nextInt();
-            }
-        }
-
-        tampilkanPendapatanCabang();
-        tampilkanJumlahStokBunga();
-        perbaruiStokBunga(sc);
-        tampilkanJumlahStokBunga();  
-        sc.close();
-    }
-
-    public static void tampilkanPendapatanCabang() {
-        for (int i = 0; i < stokBunga.length; i++) {
-            int pendapatan = 0;
-            for (int j = 0; j < stokBunga[i].length; j++) {
-                pendapatan += stokBunga[i][j] * hargaBunga[j];
-            }
-            System.out.println("Pendapatan RoyalGarden " + (i + 1) + ": " + pendapatan);
-        }
-    }
-
-    public static void tampilkanJumlahStokBunga() {
-        int[] totalStok = new int[stokBunga[0].length];
-        for (int j = 0; j < stokBunga[0].length; j++) {
-            int jumlah = 0;
-            for (int i = 0; i < stokBunga.length; i++) {
-                jumlah += stokBunga[i][j];
-            }
-            totalStok[j] = jumlah;
-            System.out.println("Jumlah stok " + namaBunga(j) + ": " + jumlah);
-        }
-    }
-
-    public static void perbaruiStokBunga(Scanner input) {
-        System.out.println("Masukkan pengurangan stok karena bunga mati untuk setiap jenis bunga:");
-        int[] penguranganStok = new int[stokBunga[0].length];
-        for (int j = 0; j < penguranganStok.length; j++) {
-            System.out.print("Pengurangan stok untuk " + namaBunga(j) + ": ");
-            penguranganStok[j] = input.nextInt();
-        }
-
-        for (int i = 0; i < stokBunga.length; i++) {
-            for (int j = 0; j < stokBunga[i].length; j++) {
-                stokBunga[i][j] -= penguranganStok[j];
-            }
-        }
-        System.out.println("Stok bunga telah diperbarui berdasarkan informasi pengurangan stok.");
-    }
-
-    public static String namaBunga(int index) {
-        String[] namaBunga = {"Aglonema", "Keladi", "Alocasia", "Mawar"};
-        return namaBunga[index];
+        hitungPendapatanCabang();
+        kurangiStokMatiCabang4();
+        stokBungaCabang4();
     }
 }
 
