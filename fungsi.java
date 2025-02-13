@@ -20,7 +20,6 @@ public class fungsi {
         tampilkanJumlahStokBunga();
         perbaruiStokBunga(sc);
         tampilkanJumlahStokBunga();  
-
         sc.close();
     }
 
@@ -47,16 +46,18 @@ public class fungsi {
     }
 
     public static void perbaruiStokBunga(Scanner input) {
-        System.out.println("Masukkan pengurangan stok bunga mati untuk setiap cabang dan setiap jenis bunga:");
+        System.out.println("Masukkan pengurangan stok karena bunga mati untuk setiap jenis bunga:");
+        int[] penguranganStok = new int[stokBunga[0].length];
+        for (int j = 0; j < penguranganStok.length; j++) {
+            System.out.print("Pengurangan stok untuk " + namaBunga(j) + ": ");
+            penguranganStok[j] = input.nextInt();
+        }
 
         for (int i = 0; i < stokBunga.length; i++) {
             for (int j = 0; j < stokBunga[i].length; j++) {
-                System.out.print("Pengurangan stok bunga " + namaBunga(j) + " untuk cabang " + (i + 1) + ": ");
-                int penguranganStok = input.nextInt();
-                stokBunga[i][j] -= penguranganStok;
+                stokBunga[i][j] -= penguranganStok[j];
             }
         }
-
         System.out.println("Stok bunga telah diperbarui berdasarkan informasi pengurangan stok.");
     }
 
@@ -65,3 +66,4 @@ public class fungsi {
         return namaBunga[index];
     }
 }
+
