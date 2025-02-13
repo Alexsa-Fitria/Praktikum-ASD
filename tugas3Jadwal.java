@@ -26,7 +26,7 @@ public class tugas3Jadwal {
             System.out.print("Masukkan semester mata kuliah ke-" + (i + 1) + ": ");
             semester[i] = sc.nextInt();
             sc.nextLine(); 
-            System.out.print("Masukkan hari mata kuliah ke-" + (i + 1) + " (misal, Senin): ");
+            System.out.print("Masukkan hari mata kuliah ke-" + (i + 1) + " (Senin, Selasa dan berikutnya): ");
             hari[i] = sc.nextLine();
         }
 
