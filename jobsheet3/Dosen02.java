@@ -13,6 +13,22 @@ class Dosen02  {
         this.usia = usia;
     }
 
+    public String getKode() {
+        return kode;
+    }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public boolean getJenisKelamin() {
+        return jenisKelamin;
+    }
+
+    public int getUsia() {
+        return usia;
+    }
+
     public void informasi () {
         System.out.println("Kode: " + kode);
         System.out.println("Nama: " + nama);
