@@ -4,6 +4,11 @@ public class MahasiswaBerprestasi02 {
     Mahasiswa02 [] listMhs= new Mahasiswa02[5];
     int idx;
 
+    public MahasiswaBerprestasi02(int kapasitas) {
+        listMhs = new Mahasiswa02[kapasitas];
+        idx = 0;
+    }
+
     void tambah ( Mahasiswa02 m ) {
         if ( idx < listMhs.length ) {
             listMhs [ idx ] = m ;
@@ -50,7 +55,7 @@ public class MahasiswaBerprestasi02 {
         for ( int i = 1 ; i < listMhs.length ; i ++ ) {
             Mahasiswa02 temp = listMhs [ i ] ;
             int j = i ;
-            while ( j > 0 && listMhs [ j - 1 ] .ipk > temp.ipk ) {
+            while ( j > 0 && listMhs [ j - 1 ] .ipk < temp.ipk ) {
                 listMhs [ j ] = listMhs [ j - 1 ] ;
                 j-- ;
             }
